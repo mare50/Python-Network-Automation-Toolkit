@@ -63,7 +63,7 @@ Ensure you place targeted command text files inside the `configs/` folder matchi
 ```bash
 python3 2_file_deploy.py
 ```
-## 🛠️ Requirements
+## 🧰 Requirements
 
 - GNS3
 - Cisco IOS images
