@@ -1,4 +1,5 @@
-# GNS3 Cisco OSPF Network Automation Project
+# Python • Netmiko • Cisco IOS • GNS3 • OSPF • SSH
+# Python Network Automation Toolkit
 
 This is a Python automation project built to configure and audit a 4-router full mesh topology inside GNS3 over SSH using **Netmiko** and `python-dotenv`.
 
@@ -23,10 +24,10 @@ GNS3_OSPF_Automation/
     └── 192.168.0.2.text       # Tailored CLI adjustments for Router 2
 ```     
     
-## 🚀 Cool Features of the Scripts
+## 🚀 Key Features
 
-- **Strategy 1 (Dynamic Parsing):** `1_dynamic_deploy.py` automatically parses each router's management IP, extracts the last octet, and uses it to mathematically configure the Loopback IP and Router-ID on the fly.
-- **Strategy 2 (File Targeting):** `2_file_deploy.py` targets the `configs/` directory, checks if a file matching the node's IP exists, and streams manual targeted configurations straight to that device.
+- **Strategy 1 (Dynamic Parsing):** `1_dynamic_deploy.py` automatically parses each router's management IP, extracts the last octet, and uses it to dynamically generate the Loopback IP and Router-ID on the fly.
+- **Strategy 2 (File Targeting):** `2_file_deploy.py` targets the `configs/` directory, checks if a file matching the node's IP exists, and deploys device-specific configuration files straight to that device.
 - **Secure Credentials:** All router passwords and secrets are completely isolated inside a private `.env` file instead of being visible inside the main Python code.
 - **Automatic Audit Trail Logging:** Every time a script runs, it automatically auto-generates a timestamped `.txt` log file capturing the exact terminal output from all routers for post-deployment analysis.
 
