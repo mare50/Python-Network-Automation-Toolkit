@@ -1,22 +1,22 @@
-# Python • Netmiko • Cisco IOS • GNS3 • OSPF • SSH
-
 # Python Network Automation Toolkit
 
-This project demonstrates Python-based network automation by configuring and auditing a four-router Cisco IOS OSPF topology in GNS3 over SSH using **Netmiko. It includes dynamic configuration generation, file-based deployment, secure credential management, and automated execution logging.
+# Python • Netmiko • Cisco IOS • GNS3 • OSPF • SSH
+
+This project demonstrates Python-based network automation by configuring and auditing a four-router Cisco IOS OSPF topology in GNS3 over SSH using Netmiko. It includes dynamic configuration generation, file-based deployment, secure credential management, and automated execution logging.
 
 ## 🏗️ How the Lab is Set Up
 
-I designed the network to have two separate traffic paths to keep things clean:
-- **Management Network:** All routers are connected to a dedicated GNS3 switch on the `192.168.88.0/24` subnet. My Network Automation container uses this path to SSH into the routers.
+The lab uses separate management and data planes:
+- **Management Network:** All routers are connected to a dedicated GNS3 switch on the `192.168.88.0/24` subnet. A Network Automation container uses this network to establish SSH connections to the routers.
 - **Data Network:** The routers are cabled together in a full mesh layout using links in the `192.168.90.0/30` subnet.
-- **Routing Engine:** The scripts turn on OSPF Area 0 on all interfaces and automatically set up point-to-point network types for fast neighbor connections.
+- **Dynamic Routing:** The automation scripts configure OSPF Area 0 on all router interfaces and set the OSPF network type to point-to-point to accelerate neighbor establishment.
 
 ## 📂 Project Directory Layout
 
-GNS3_OSPF_Automation/
+Python-Network-Automation-Toolkit/
 
 ```text
-GNS3_OSPF_Automation/
+Python-Network-Automation-Toolkit/
 ├── .env                       # Local environment credentials (git-ignored)
 ├── 1_dynamic_deploy.py        # Automation Strategy #1: Algorithmic deployment
 ├── 2_file_deploy.py           # Automation Strategy #2: Custom file deployment
@@ -30,7 +30,7 @@ GNS3_OSPF_Automation/
 - **Strategy 1 (Dynamic Parsing):** `1_dynamic_deploy.py` automatically parses each router's management IP, extracts the last octet, and uses it to dynamically generate the Loopback IP and Router-ID on the fly.
 - **Strategy 2 (File Targeting):** `2_file_deploy.py` targets the `configs/` directory, checks if a file matching the node's IP exists, and deploys device-specific configuration files straight to that device.
 - **Secure Credentials:** All router passwords and secrets are completely isolated inside a private `.env` file instead of being visible inside the main Python code.
-- **Automatic Audit Trail Logging:** Every time a script runs, it automatically auto-generates a timestamped `.txt` log file capturing the exact terminal output from all routers for post-deployment analysis.
+- **Automatic Audit Trail Logging:** Every time a script runs, it automatically generates a timestamped `.txt` log file capturing the exact terminal output from all routers for post-deployment analysis.
 
 ## 🛠️ How to Run It
 
@@ -63,3 +63,10 @@ Ensure you place targeted command text files inside the `configs/` folder matchi
 ```bash
 python3 2_file_deploy.py
 ```
+## Requirements
+
+- GNS3
+- Cisco IOS images
+- Python 3
+- Netmiko
+- python-dotenv
