@@ -2,7 +2,7 @@
 
 # Python Network Automation Toolkit
 
-This is a Python automation project built to configure and audit a 4-router full mesh topology inside GNS3 over SSH using **Netmiko** and `python-dotenv`.
+This project demonstrates Python-based network automation by configuring and auditing a four-router Cisco IOS OSPF topology in GNS3 over SSH using **Netmiko. It includes dynamic configuration generation, file-based deployment, secure credential management, and automated execution logging.
 
 ## 🏗️ How the Lab is Set Up
 
